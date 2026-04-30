@@ -1,6 +1,5 @@
-# Distributed Security Crawler Framework
+# sampling strategies
 
-This repository contains a scalable, distributed web crawling framework designed to analyze and detect security vulnerabilities (e.g., Client-side XSS, Security Headers, Inclusions) across a large set of websites. It is built for artifact review to be clean, anonymized, and easy to run locally or on a high-performance compute cluster (e.g., Slurm).
 
 ## Architecture
 
@@ -11,14 +10,16 @@ The framework consists of two main components:
 
 ## Repository Structure
 
-- `crawlerserver/`: Source code for the backend task dispatcher.
-- `tscrawler/`: Source code for the frontend headless-browser crawler workers.
+- `crawlerserver/`: Source code for the backend task dispatcher. It manages the state of crawling targets using PostgreSQL and distributes tasks via ZeroMQ.
+- `tscrawler/`: Source code for the frontend headless-browser crawler workers. Built with TypeScript and Playwright, it executes the security experiments on target sites.
+- `commoncrawl/`: Scripts and tools for collecting, processing, and analyzing historical web data from the Common Crawl dataset for baseline comparison.
+- `src/`: Core Python utilities, including Tortoise ORM database definitions, database seeding scripts (`source_tranco_async.py`), and offline security analysis scripts (e.g., `headers_issues/`).
 - `Dockerfile`: Single unified Docker image that packages both components and sets up the environment (PostgreSQL, PgBouncer, Node.js, Python, Playwright).
 - `entrypoint.sh`: The main entrypoint for the Docker container that initializes the database, seeds it with targets, and starts the `crawlerserver` along with the `tscrawler` workers via PM2/Supervisor.
 - `run.sh`, `job.sh`: Utility scripts for deploying the containerized crawler on a Slurm cluster.
 - `shutdown_db.sh`: Utility script for safely terminating the running databases and saving WAL records.
 
-- **Simplified Seeding:** We have a easily modifiable CSV list (`crawlerserver/src/example.csv`). You can add any domains you want to test directly into this file.
+- **Simplified Seeding:** We have an easily modifiable CSV list (`crawlerserver/src/example.csv`). You can add any domains you want to test directly into this file.
 
 ## Getting Started
 
