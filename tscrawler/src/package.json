@@ -1,0 +1,46 @@
+{
+  "name": "typescript-crawler",
+  "version": "1.0.0",
+  "description": "Modular approach to web crawling using typescript and flexible configuration options",
+  "main": "index.ts",
+  "scripts": {
+    "build": "rm -rf dist && mkdir dist && cp -r ./snippets ./dist/snippets && tsc -p ."
+  },
+  "keywords": [],
+  "author": "Anonymous",
+  "license": "MIT",
+  "dependencies": {
+    "argparse": "2.0.1",
+    "csv-parse": "5.3.6",
+    "dotenv": "16.0.3",
+    "md5": "2.3.0",
+    "moment": "2.29.4",
+    "node-fetch": "2.6.7",
+    "node-schedule": "2.1.1",
+    "normalize-url": "6.1.0",
+    "pg": "^8.9.0",
+    "pino": "8.8.0",
+    "pino-multi-stream": "6.0.0",
+    "pino-pretty": "9.1.1",
+    "playwright": "^1.33.0",
+    "reflect-metadata": "0.1.13",
+    "sequelize": "6.28.2",
+    "sequelize-typescript": "2.1.5",
+    "tld-extract": "2.1.0",
+    "yargs": "^17.7.2",
+    "zeromq": "6.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "18.19.3",
+    "@types/node-schedule": "2.1.0",
+    "@types/pg": "^8.11.10",
+    "@types/uuid": "9.0.1",
+    "@types/validator": "13.7.12",
+    "@types/yargs": "^17.0.33",
+    "@typescript-eslint/eslint-plugin": "6.4.0",
+    "@typescript-eslint/parser": "6.4.0",
+    "eslint": "8.47.0",
+    "tslib": "2.5.0",
+    "typescript": "^5.5.4"
+  }
+}

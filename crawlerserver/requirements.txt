@@ -1,0 +1,4 @@
+pyzmq
+tranco
+tortoise-orm[asyncpg]
+tortoise-orm[accel]

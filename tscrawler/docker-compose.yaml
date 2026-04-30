@@ -1,0 +1,74 @@
+services:
+  typescript-crawler-db:
+    image: postgres:16.1
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: myuser
+      POSTGRES_DB: experiment
+    ports:
+      - '55433:5432' # Expose Postgres port for external connections
+    networks:
+      - tscrawler_db_network
+    volumes:
+      - tscrawler_db:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  typescript-crawler:
+    build: .
+    environment:
+      EXPERIMENT: cxss #pmsecurity 
+      # crawler setting
+      CRAWLER_ID: 2
+      CRAWLER_START: 1 # Id of first crawler to start
+      CRAWLER_COUNT: 20 # Number of seperate crawlers to start (max. cap on crawler id, incremented during start)
+      POLLING_INTERVAL: 5 # Interval crawlers look into database for new tasks in seconds
+      # ZMQ Configuration for account framework interaction
+      ZMQ_ENABLE: true
+      ZMQ_HOST: tcp://crawler_server:5555
+      ZMQ_EXPERIMENT: cxss
+      # Starting insecure webserver containing vulnerable page examples (for use without ZMQ)
+      START_INSECURE_WEBSERVER: false
+      # Database configuration details
+      POSTGRES_HOST: typescript-crawler-db
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_PORT: 5432
+      # Redis configuration
+      REDIS_ENABLE: true
+      REDIS_HOST: redis-server
+      REDIS_PORT: 6379
+      REDIS_DB: 0
+      # Proxy configuration
+      PROXY_ENABLE: false
+      PROXY_URL: http://crawler_proxy:8080
+    ports:
+      - 55903:5900
+    user: typescriptcrawler
+    volumes:
+      - /home/worker/logs/typescript-crawler-data:/typescript-crawler-data
+    networks:
+      - servernetwork
+      - tscrawler_db_network
+      - proxynetwork
+    depends_on:
+      typescript-crawler-db:
+        condition: service_healthy
+
+volumes:
+  tscrawler_db:
+    driver: local
+
+networks:
+  servernetwork:
+    driver: bridge # Explicitly set bridge network type
+    external: true
+  proxynetwork:
+    driver: bridge # Explicitly set bridge network type
+    external: true
+  tscrawler_db_network:
+    driver: bridge # Explicitly set bridge network type
