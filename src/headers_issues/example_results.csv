@@ -1,0 +1,11 @@
+﻿url,domain,header,severity,issue,details
+http://1.treu.com/declaration-of-conformity.html,1.treu.com,Set-Cookie,medium,Cookie is missing SameSite.,PHPSESSID=3c9ec459a5a7706c09d9ee54a421812a; path=/; HttpOnly
+http://1.treu.com/declaration-of-conformity.html,1.treu.com,Set-Cookie,medium,Cookie is missing Secure.,PHPSESSID=3c9ec459a5a7706c09d9ee54a421812a; path=/; HttpOnly
+http://1042017.tk89m.com/index.phtml?PUT=A_SORT&SORT=R52&FID=1042017,1042017.tk89m.com,Set-Cookie,medium,Cookie is missing SameSite.,"FACTORY_ID=1042017; expires=Mon, 19-Oct-2026 00:00:13 GMT"
+http://1042017.tk89m.com/index.phtml?PUT=A_SORT&SORT=R52&FID=1042017,1042017.tk89m.com,Set-Cookie,medium,Cookie is missing Secure.,"FACTORY_ID=1042017; expires=Mon, 19-Oct-2026 00:00:13 GMT"
+http://11352.0tio.top/html/962f999028.html,11352.0tio.top,Set-Cookie,medium,Cookie is missing SameSite.,server_name_session=f0f21f1fd763ff6968b572866a89cbea; Max-Age=86400; httponly; path=/
+http://11352.0tio.top/html/962f999028.html,11352.0tio.top,Set-Cookie,medium,Cookie is missing Secure.,server_name_session=f0f21f1fd763ff6968b572866a89cbea; Max-Age=86400; httponly; path=/
+http://1gym-kaval.kav.sch.gr/joomla25/index.php/taksi-g/arxaia-elliniki-grammateia,1gym-kaval.kav.sch.gr,Set-Cookie,medium,Cookie is missing SameSite.,cbff4b790ba0df888a0f882e0fb576e5=j1hlvmn7lkfnqckb781v9n6560; path=/; HttpOnly
+http://1gym-kaval.kav.sch.gr/joomla25/index.php/taksi-g/arxaia-elliniki-grammateia,1gym-kaval.kav.sch.gr,Set-Cookie,medium,Cookie is missing Secure.,cbff4b790ba0df888a0f882e0fb576e5=j1hlvmn7lkfnqckb781v9n6560; path=/; HttpOnly
+http://29722.3mef.top/,29722.3mef.top,Set-Cookie,medium,Cookie is missing SameSite.,server_name_session=0c065fbd21eae5a05c426c7914441a39; Max-Age=86400; httponly; path=/
+http://29722.3mef.top/,29722.3mef.top,Set-Cookie,medium,Cookie is missing Secure.,server_name_session=0c065fbd21eae5a05c426c7914441a39; Max-Age=86400; httponly; path=/
