@@ -28,12 +28,19 @@ The `tsCrawler` component connects to the `crawlerServer` (ZMQ Server) to reques
    cd src
    ```
 
-2. Install dependencies:
+2. **Unzip the Custom Browser (Foxhound):**
+   Due to GitHub file size limits, the specialized headless browser is compressed.
+   ```bash
+   unzip foxhound.zip
+   chmod +x foxhound/foxhound
+   ```
+
+3. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Build the TypeScript project:
+4. Build the TypeScript project:
    ```bash
    npm run build
    ```

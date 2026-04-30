@@ -12,7 +12,7 @@ RUN apt-get update && \
     apt-get install -y nano build-essential software-properties-common postgresql-client git tmux curl ca-certificates && \
     apt-get install -y libxml2-dev libxslt-dev cmake pkg-config util-linux postgresql-client && \
     apt-get install -y libdbus-glib-1-2 libxt6 libxcomposite1 libxdamage1 libxrandr2 libasound2 libgtk-3-0 libx11-xcb1 && \
-    apt-get install -y python3.10 python3-pip && \
+    apt-get install -y python3.10 python3-pip unzip && \
     apt-get install -y cron iotop dstat atop inotify-tools && \
     pip3 install z3-solver==4.8.7.0 ply && \
     pip3 install --no-cache-dir pyzmq tranco tortoise-orm[asyncpg] tortoise-orm[accel] && \
@@ -35,6 +35,7 @@ COPY ./crawlerserver /app/crawlerserver
 COPY ./tscrawler /app/tscrawler
 WORKDIR /app/tscrawler/src
 
+RUN unzip foxhound.zip && chmod +x foxhound/foxhound
 RUN npm install && npm run build
 RUN npx playwright install --with-deps
 

@@ -28,12 +28,20 @@ You can run this project either locally using Docker, or on a Slurm-based cluste
 
 To test the entire workflow locally:
 
-1. **Build the Docker Image:**
+1. **Unzip the Custom Browser (Foxhound):**
+   Due to GitHub file size limits, the specialized headless browser is compressed. Unzip it first:
+   ```bash
+   cd tscrawler/src
+   unzip foxhound.zip
+   cd ../..
+   ```
+
+2. **Build the Docker Image:**
    ```bash
    docker build -t anonymous/crawler:latest .
    ```
 
-2. **Run the Container:**
+3. **Run the Container:**
    You can run the container locally. Make sure to mount volumes if you want persistent data, or just run it ephemerally:
    ```bash
    docker run -it --rm \
