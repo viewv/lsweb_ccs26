@@ -1,30 +1,22 @@
 # sampling strategies
 
-
-## Architecture
-
-The framework consists of two main components:
-
-1. **`crawlerserver`**: A central queue and dispatch server. It uses PostgreSQL and PgBouncer to manage the state of crawling targets and distributes sessions to connected crawlers via ZeroMQ (ZMQ). 
-2. **`tscrawler`**: A headless-browser-based worker written in TypeScript (using Playwright). It connects to the `crawlerserver`, fetches target websites, and runs detailed security experiments (e.g., executing client-side XSS checks, inspecting headers) before returning the results.
-
 ## Repository Structure
 
 - `crawlerserver/`: Source code for the backend task dispatcher. It manages the state of crawling targets using PostgreSQL and distributes tasks via ZeroMQ.
 - `tscrawler/`: Source code for the frontend headless-browser crawler workers. Built with TypeScript and Playwright, it executes the security experiments on target sites.
-- `commoncrawl/`: Scripts and tools for collecting, processing, and analyzing historical web data from the Common Crawl dataset for baseline comparison.
-- `src/`: Core Python utilities, including Tortoise ORM database definitions, database seeding scripts (`source_tranco_async.py`), and offline security analysis scripts (e.g., `headers_issues/`).
+- `commoncrawl/`: Scripts and tools for collecting, processing, and analyzing historical web data from the Common Crawl dataset for baseline comparison. `commoncrawl/README.md` for specific execution instructions and details.
+- `src/`: Core Python utilities, including Tortoise ORM database definitions, database seeding scripts, and offline security analysis scripts like `headers_issues/`. `src/README.md` and `src/headers_issues/README.md`.
 - `Dockerfile`: Single unified Docker image that packages both components and sets up the environment (PostgreSQL, PgBouncer, Node.js, Python, Playwright).
 - `entrypoint.sh`: The main entrypoint for the Docker container that initializes the database, seeds it with targets, and starts the `crawlerserver` along with the `tscrawler` workers via PM2/Supervisor.
 - `run.sh`, `job.sh`: Utility scripts for deploying the containerized crawler on a Slurm cluster.
 - `shutdown_db.sh`: Utility script for safely terminating the running databases and saving WAL records.
 
-- **Simplified Seeding:** We have an easily modifiable CSV list (`crawlerserver/src/example.csv`). You can add any domains you want to test directly into this file.
-
-## Getting Started
+## Crawler
 
 You can run this project either locally using Docker, or on a Slurm-based cluster.
 
+
+# TODO
 ### 1. Running Locally (Docker)
 
 To test the entire workflow locally:
