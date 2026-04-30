@@ -1,0 +1,14 @@
+# Core dependencies
+# ahocorasick==0.9
+pyahocorasick
+python-dotenv
+requests
+warcio
+tqdm
+
+# Celery and message queue
+celery[redis]>=5.3.0
+redis>=5.0.0
+flower
+
+msgpack>=1.0.0
