@@ -1,4 +1,4 @@
-# Core Utilities (`src/`)
+# Core Utilities (`util/`)
 
 This directory contains shared Python utilities, database models, and offline analysis scripts used across the framework.
 
