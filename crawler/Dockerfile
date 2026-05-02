@@ -35,7 +35,7 @@ COPY ./crawlerserver /app/crawlerserver
 COPY ./tscrawler /app/tscrawler
 WORKDIR /app/tscrawler/src
 
-RUN unzip foxhound.zip && chmod +x foxhound/foxhound
+# RUN unzip foxhound.zip && chmod +x foxhound/foxhound
 RUN npm install && npm run build
 RUN npx playwright install --with-deps
 
