@@ -12,7 +12,6 @@ from database.db import init_db, close_db
 class TrancoHelper(object):
     def __init__(self):
         self.ranking = Tranco(cache=True, cache_dir='.tranco')
-        # self.ranking_list = self.ranking.list(list_id="663NX")
         self.ranking_list = self.ranking.list(list_id="8LZ3V")
         self.tranco_top_list: List[str] = self.ranking_list.top()
 
