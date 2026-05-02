@@ -11,27 +11,38 @@ if [[ -z "$PGDATA" || -z "$PG_PORT" || -z "$PGBOUNCER_PORT" || -z "$PGUSER" ]]; 
 fi
 
 mkdir -p "$PGDATA"
-chown -R postgres:postgres "$PGDATA"
+if [ "$(id -u)" = "0" ]; then
+  chown -R postgres:postgres "$PGDATA"
+fi
 chmod 700 "$PGDATA"
 
 # 1. Mount pg_wal to tmpfs
-TMP_WAL_DIR="/dev/shm/$WALDATA"
+TMP_WAL_DIR="${TMP_WAL_BASE:-/dev/shm}/${WALDATA:-pg_wal_default}"
 mkdir -p "$TMP_WAL_DIR"
-chown postgres:postgres "$TMP_WAL_DIR"
+if [ "$(id -u)" = "0" ]; then
+  chown postgres:postgres "$TMP_WAL_DIR"
+fi
 chmod 700 "$TMP_WAL_DIR"
 
 # 2. Set permanent WAL archive directory under PGDATA
-ARCHIVE_DIR="/home/worker/WAL/$WALDATA"
+ARCHIVE_DIR="${ARCHIVE_PATH:-$PGDATA/wal_archive}"
 mkdir -p "$ARCHIVE_DIR"
-chown postgres:postgres "$ARCHIVE_DIR"
+if [ "$(id -u)" = "0" ]; then
+  chown postgres:postgres "$ARCHIVE_DIR"
+fi
 chmod 700 "$ARCHIVE_DIR"
 
 # Create PostgreSQL lock file directory
-mkdir -p /var/run/postgresql
-chmod 777 /var/run/postgresql
+if [ "$(id -u)" = "0" ]; then
+  mkdir -p /var/run/postgresql
+  chmod 777 /var/run/postgresql
+fi
 
 # Initialize database (if not initialized)
 if [ ! -f "$PGDATA/PG_VERSION" ]; then
+  # Clean any metadata files injected by Docker Desktop on macOS (VirtioFS artifacts)
+  # Safe because the absence of PG_VERSION means there is no valid database here
+  find "${PGDATA}" -mindepth 1 -delete 2>/dev/null || true
   /usr/lib/postgresql/*/bin/initdb -D "$PGDATA" --username="$PGUSER" --waldir="$TMP_WAL_DIR"
 else
   echo "PostgreSQL Exisiting, skip initdb"
@@ -230,7 +241,6 @@ supervisorctl update
 # config the tscrawler
 cd /app/tscrawler
 
-chmod +x src/foxhound/foxhound
 cd src/snippets/cxss/persistent-clientside-xss/src/
 pip install -r requirements.txt
 
@@ -267,9 +277,6 @@ PM2_HOME=/tmp/my_new_pm2_dir/$PGDATA
 
 EOF
 
-# Keep running in foreground
-# tail -f "$PGDATA/logfile"
-
 export PM2_HOME=/tmp/my_new_pm2_dir/$PGDATA
 
 # update ulimit
@@ -278,3 +285,7 @@ ulimit -n 65535
 # move into the /run
 cd /run
 cp -r /app/tscrawler/ ./
+
+# Keep container running in foreground so Docker doesn't exit
+# Tails the PostgreSQL log so output is visible via 'docker logs'
+tail -f "$PGDATA/logfile"
