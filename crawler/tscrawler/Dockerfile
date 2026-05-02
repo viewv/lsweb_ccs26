@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/playwright:v1.33.0-focal
 ENV TZ=Europe/Berlin
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ARG EXPERIMENT
 
 # Set container timezone
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update -y
+RUN rm -f /etc/apt/sources.list.d/nodesource.list && apt-get update -y
 RUN apt-get upgrade -y
 RUN apt-get install -y nano build-essential software-properties-common
 
