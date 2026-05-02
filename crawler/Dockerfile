@@ -46,8 +46,8 @@ RUN npm install
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-COPY entrypoint_crux.sh /entrypoint_crux.sh
-RUN chmod +x /entrypoint_crux.sh
+# COPY entrypoint_crux.sh /entrypoint_crux.sh
+# RUN chmod +x /entrypoint_crux.sh
 
 COPY shutdown_db.sh /shutdown_db.sh
 RUN chmod +x /shutdown_db.sh
