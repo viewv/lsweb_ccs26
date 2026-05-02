@@ -9,4 +9,5 @@ This directory contains shared Python utilities, database models, and offline an
   - `db.py` & `db_config.py`: Scripts for configuring and establishing the connection to the PostgreSQL database.
 - **`config/`**: Contains the configuration settings for the Python utilities.
 - **`headers_issues/`**: Offline analysis scripts designed to detect security header vulnerabilities and misconfigurations from the scraped data. It includes a standalone analyzer (`header_analyzer.py`) and a reproducible example dataset.
+- **`shapley/`**: Dataset and analysis code (Jupyter notebook) for computing Shapley values to compare the effectiveness and stability of different sampling strategies (bucket, random, and stratified).
 - **`source_tranco_async.py`**: An asynchronous script used to fetch the Tranco top sites list and seed the PostgreSQL database with these crawling targets. It uses the ORM to efficiently insert records and is often used during the initial setup phase.
