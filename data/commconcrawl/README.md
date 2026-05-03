@@ -1,4 +1,4 @@
-# Prevalence Analysis Artifacts
+# Common crawl Analysis Artifacts
 
 This directory contains the code and data necessary to reproduce the prevalence analysis plots presented in the paper.
 
