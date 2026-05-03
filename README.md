@@ -5,4 +5,4 @@
 - `crawler/`: Contains the distributed web crawling framework, including the backend dispatcher (`crawlerserver`) and the headless-browser workers (`tscrawler`). `crawler/README.md` for specific execution instructions and details.
 - `commoncrawl/`: Scripts and tools for collecting, processing, and analyzing historical web data from the Common Crawl dataset for baseline comparison. `commoncrawl/README.md` for specific execution instructions and details.
 - `util/`: Core Python utilities, including Tortoise ORM database definitions, database seeding scripts, and offline security analysis scripts like `headers_issues/` and `shapley/` (Shapley value analysis for sampling strategies). `util/README.md` and `util/headers_issues/README.md` for detailed instructions.
-- `data/`: We share the non-identifying results derived from our measurements. Note that due to ethical considerations, we do not disclose the original data of Tranco here, as the rankings can be traced back to the corresponding websites.
+- `data/`: We share the non-identifying results derived from our measurements.
