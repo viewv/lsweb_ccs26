@@ -1,0 +1,4 @@
+method,issue,prevalence_class,true_rate,median_stop_n,mean_stop_fraction,p95_stop_n,success_rate,median_relative_error,p95_relative_error,maximum_relative_error,full_budget_rate
+adaptive,Cookie security,High,0.23342,8000.0,0.08136,8000.0,0.99,0.012659583583240567,0.037828806443321074,0.07355839259703535,0.0
+adaptive,Clickjacking,Medium,0.11005,16000.0,0.16368000000000002,16000.0,0.983,0.013175829168559808,0.0407769195820081,0.07564743298500681,0.0
+adaptive,CORS,Low,0.00759,100000.0,1.0,100000.0,1.0,0.0,0.0,0.0,1.0

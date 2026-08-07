@@ -1,0 +1,22 @@
+issue,prevalence_class,stage_n,stage_fraction,trial_count,trial_fraction,cumulative_trial_fraction
+Cookie security,High,10000,0.02,0,0.0,0.0
+Cookie security,High,20000,0.04,1000,1.0,1.0
+Cookie security,High,40000,0.08,0,0.0,1.0
+Cookie security,High,80000,0.16,0,0.0,1.0
+Cookie security,High,160000,0.32,0,0.0,1.0
+Cookie security,High,320000,0.64,0,0.0,1.0
+Cookie security,High,500000,1.0,0,0.0,1.0
+Clickjacking,Medium,10000,0.02,0,0.0,0.0
+Clickjacking,Medium,20000,0.04,976,0.976,0.976
+Clickjacking,Medium,40000,0.08,24,0.024,1.0
+Clickjacking,Medium,80000,0.16,0,0.0,1.0
+Clickjacking,Medium,160000,0.32,0,0.0,1.0
+Clickjacking,Medium,320000,0.64,0,0.0,1.0
+Clickjacking,Medium,500000,1.0,0,0.0,1.0
+CORS,Low,10000,0.02,0,0.0,0.0
+CORS,Low,20000,0.04,0,0.0,0.0
+CORS,Low,40000,0.08,0,0.0,0.0
+CORS,Low,80000,0.16,0,0.0,0.0
+CORS,Low,160000,0.32,0,0.0,0.0
+CORS,Low,320000,0.64,972,0.972,0.972
+CORS,Low,500000,1.0,28,0.028,1.0

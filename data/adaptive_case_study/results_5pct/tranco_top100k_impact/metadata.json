@@ -1,0 +1,45 @@
+{
+  "population": "Tranco Top-100,000 impact-oriented target frame",
+  "measurement_objective": "impact-oriented affected-site rate",
+  "population_size": 100000,
+  "trials": 1000,
+  "seed": 20260722,
+  "issues": [
+    "Cookie security",
+    "Clickjacking",
+    "CORS"
+  ],
+  "true_rates": {
+    "Cookie security": 0.23342,
+    "Clickjacking": 0.11005,
+    "CORS": 0.00759
+  },
+  "stages": [
+    2000,
+    4000,
+    8000,
+    16000,
+    32000,
+    64000,
+    100000
+  ],
+  "stage_fractions": [
+    0.02,
+    0.04,
+    0.08,
+    0.16,
+    0.32,
+    0.64,
+    1.0
+  ],
+  "pilot_fraction": 0.02,
+  "minimum_looks": 2,
+  "relative_change_tolerance": 0.05,
+  "relative_margin_tolerance": 0.05,
+  "confidence_interval": "Stagewise normal-approximation 95% proportion interval with finite-population correction",
+  "confidence_interval_role": "A familiar margin-of-error diagnostic, not a claim of sequentially simultaneous 95% coverage",
+  "sampling": "Nested uniform random sampling without replacement; cumulative sample size doubles at every stage",
+  "simulation": "Exact multivariate-hypergeometric increments over the eight joint outcome states; distributionally equivalent to random-permutation prefix sampling",
+  "input_description": "Boolean outcome labels with Tranco rank <= 100,000, reconstructed from impact/cat_issues/cookie.csv, click.csv, and acao.csv. Top-100K defines the target population; samples are drawn uniformly from the entire target frame.",
+  "ground_truth_policy": "The full-frame affected-site rate is not passed to the stopping rule; it is used only after stopping to evaluate relative error"
+}

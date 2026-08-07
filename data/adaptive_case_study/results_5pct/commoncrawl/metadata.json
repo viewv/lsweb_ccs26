@@ -1,0 +1,45 @@
+{
+  "population": "Common Crawl header snapshot",
+  "measurement_objective": "prevalence-oriented affected-host rate",
+  "population_size": 24834442,
+  "trials": 1000,
+  "seed": 20260722,
+  "issues": [
+    "Cookie security",
+    "Clickjacking",
+    "CORS"
+  ],
+  "true_rates": {
+    "Cookie security": 0.3127721170461571,
+    "Clickjacking": 0.18477785810528782,
+    "CORS": 0.0028003850458971457
+  },
+  "stages": [
+    496689,
+    993378,
+    1986756,
+    3973512,
+    7947024,
+    15894048,
+    24834442
+  ],
+  "stage_fractions": [
+    0.02000000644266539,
+    0.04000001288533078,
+    0.08000002577066156,
+    0.16000005154132313,
+    0.32000010308264626,
+    0.6400002061652925,
+    1.0
+  ],
+  "pilot_fraction": 0.02,
+  "minimum_looks": 2,
+  "relative_change_tolerance": 0.05,
+  "relative_margin_tolerance": 0.05,
+  "confidence_interval": "Stagewise normal-approximation 95% proportion interval with finite-population correction",
+  "confidence_interval_role": "A familiar margin-of-error diagnostic, not a claim of sequentially simultaneous 95% coverage",
+  "sampling": "Nested uniform random sampling without replacement; cumulative sample size doubles at every stage",
+  "simulation": "Exact multivariate-hypergeometric increments over the eight joint outcome states; distributionally equivalent to random-permutation prefix sampling",
+  "input_description": "Eight joint-state counts from commoncrawl_joint_counts.csv; regenerate from domain_issue_wide with data/extract_commoncrawl_joint_counts.sql",
+  "ground_truth_policy": "The full-frame affected-site rate is not passed to the stopping rule; it is used only after stopping to evaluate relative error"
+}
