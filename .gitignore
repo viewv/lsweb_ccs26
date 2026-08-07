@@ -1,3 +1,6 @@
 libxul.so
 .DS_Store
 crawler/local_data/
+
+# Temporary figure revision exploration (not for submission)
+data/impact/fig_revision/
