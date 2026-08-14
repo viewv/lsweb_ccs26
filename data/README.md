@@ -4,6 +4,8 @@ This directory contains the non-identifying results and analysis scripts derived
 
 ## Directory Structure
 
+- `papers.xlsx`: Survey spreadsheet of web measurement papers (year, venue, title, sampling strategy, datasets, DOI) that informed our sampling-strategy analysis.
+- `adaptive_case_study/`: Self-contained code and frozen results for the adaptive probability sampling case study (Section 8), with unit tests and end-to-end reproduction scripts.
 - `commconcrawl/`: Data and scripts for the prevalence analysis comparing our measurements with the Common Crawl baseline. 
 - `hybrid/`: Data and plotting scripts for evaluating hybrid sampling strategies.
 - `impact/`: Baseline JSON data and scripts for analyzing the impact of different sample sizes (10k to 100k) on prevalence estimation.
